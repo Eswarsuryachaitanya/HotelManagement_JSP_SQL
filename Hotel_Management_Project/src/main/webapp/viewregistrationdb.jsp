@@ -5,21 +5,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Guest Details</title>
-<style>
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: pink;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Guest Details - StarOne Hotel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            color: #2c3e50;
+            position: relative;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .error {
+            color: #e74c3c;
+        }
+        h2, .error {
+            transition: color 0.3s;
+        }
+        @media (max-width: 600px) {
+            .card {
+                padding: 30px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
+
 <%
     String name = request.getParameter("guestname");
     String phone = request.getParameter("phone");
@@ -42,17 +82,21 @@ body {
                 String aadhar = res.getString("aadhar");
                 String checkin = res.getString("checkin");
 
-                %>
-                <h2>Guest Name: <%= gname %></h2>
-                <h2>Guest Mobile Number: <%= mobile %></h2>
-                <h2>Guest Room Number: <%= room %></h2>
-                <h2>Guest Aadhar Number: <%= aadhar %></h2>
-                <h2>Guest Checkin Date: <%= checkin %></h2>
-                <%
+%>
+<div class="card">
+    <h2>Guest Name: <%= gname %></h2>
+    <h2>Mobile Number: <%= mobile %></h2>
+    <h2>Room Number: <%= room %></h2>
+    <h2>Aadhar Number: <%= aadhar %></h2>
+    <h2>Check-in Date: <%= checkin %></h2>
+</div>
+<%
             } else {
-                %>
-                <h2>No guest found with the provided name and mobile number.</h2>
-                <%
+%>
+<div class="card">
+    <h2 class="error">No guest found with the provided name and mobile number.</h2>
+</div>
+<%
             }
 
             res.close();
@@ -60,11 +104,20 @@ body {
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
-            out.println("Error: " + e.getMessage());
+%>
+<div class="card">
+    <h2 class="error">Error: <%= e.getMessage() %></h2>
+</div>
+<%
         }
     } else {
-        out.println("Please provide both name and mobile number.");
+%>
+<div class="card">
+    <h2 class="error">Please provide both the name and mobile number.</h2>
+</div>
+<%
     }
 %>
+
 </body>
 </html>
