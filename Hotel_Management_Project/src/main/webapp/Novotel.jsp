@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Welcome to Novotel</title>
+<title>Welcome to StarOne Hotel </title>
 <style>
 /* Basic Reset */
 * {
@@ -19,8 +19,34 @@ body {
     justify-content: center;
     flex-direction: column;
     background: linear-gradient(to right, #ffafbd, #ffc3a0);
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     padding: 20px;
+    position: relative;
+}
+
+/* Body Background Image */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.travelandleisure.com/thmb/rN0WUat7yHF4sGXcdqZqx7BH12U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/peninsula-manila-025-TOPHOTELSWB21-701643345970426694bf0f94bbe06595.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+    filter: blur(5px);
+}
+
+/* Header Styling */
+h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 /* Table Styling */
@@ -28,37 +54,39 @@ table {
     border-collapse: collapse;
     width: 100%;
     max-width: 600px;
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    z-index: 1;
 }
 
 /* Table Cells */
 td {
-    padding: 15px;
+    padding: 20px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    font-size: 18px;
+    font-size: 20px;
+    color: #34495e;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover Effects for Table Cells */
+td:hover {
+    background-color: #f1f1f1;
 }
 
 /* Links Styling */
 a {
     text-decoration: none;
-    color: #3498db;
+    color: #e74c3c;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color 0.3s ease, transform 0.2s;
 }
 
 a:hover {
     color: #2ecc71;
-}
-
-/* Header Styling */
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #2c3e50;
+    transform: scale(1.05);
 }
 
 /* Responsive Media Query */
@@ -67,35 +95,19 @@ h1 {
         width: 90%;
     }
     td {
-        font-size: 16px;
-        padding: 10px;
+        font-size: 18px;
+        padding: 15px;
     }
     h1 {
-        font-size: 28px;
+        font-size: 32px;
     }
-}
-
-/* Adding Background Image */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: "https://www.travelandleisure.com/thmb/rN0WUat7yHF4sGXcdqZqx7BH12U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/peninsula-manila-025-TOPHOTELSWB21-701643345970426694bf0f94bbe06595.jpg"
- 
-    background-size: cover;
-    background-position: center;
-    opacity: 0.4;
-    z-index: -1;
 }
 </style>
 </head>
-<body style="background-image: "https://www.travelandleisure.com/thmb/rN0WUat7yHF4sGXcdqZqx7BH12U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/peninsula-manila-025-TOPHOTELSWB21-701643345970426694bf0f94bbe06595.jpg">
+<body>
 
-    <h1>WELCOME TO NOVOTEL</h1>
-    <table>
+    <h1>WELCOME TO StarOne HOTEL</h1>
+    <table >
         <tr>
             <td>Reserve a room:</td>
             <td><a href="reserve_room.jsp">Reserve Room</a></td>
@@ -117,5 +129,6 @@ body::before {
             <td><a href="deleteregistration.jsp">Delete Registration</a></td>
         </tr>
     </table>
+
 </body>
 </html>
